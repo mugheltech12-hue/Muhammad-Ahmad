@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <style>
     :root {
       --bg: #08080a;
@@ -394,37 +395,16 @@
       box-shadow: 0 18px 50px rgba(0,0,0,0.35), 0 0 40px var(--accent-glow);
     }
     .game-mark {
-      height: 132px;
-      display: grid;
-      place-items: center;
-      position: relative;
-      isolation: isolate;
-    }
-    .game-mark::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent, var(--surface));
-    }
-    .letter {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 4.2rem;
-      font-weight: 600;
-      opacity: 0.22;
-      position: relative;
-      z-index: 1;
+      height: 200px;
+      background: #101016;
     }
     .game-icon {
-      position: relative;
-      z-index: 1;
-      width: 96px;
-      height: 96px;
-      object-fit: contain;
-      border-radius: 20px;
-      filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.5));
-      transition: transform 0.35s ease;
+      display: block;
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px 12px 0 0;
     }
-    .game:hover .game-icon { transform: scale(1.06) translateY(-2px); }
     .pad { position: relative; padding: 0 1.2rem 1.25rem; flex: 1; display: flex; flex-direction: column; }
     .genre {
       align-self: flex-start;
@@ -910,18 +890,18 @@
           <form class="form reveal right" id="contactForm">
             <div>
               <label for="name">Name</label>
-              <input id="name" name="name" type="text" placeholder="Your name" required>
+              <input id="name" name="from_name" type="text" placeholder="Your name" required>
             </div>
             <div>
               <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="you@studio.com" required>
+              <input id="email" name="from_email" type="email" placeholder="you@studio.com" required>
             </div>
             <div>
               <label for="message">Message</label>
               <textarea id="message" name="message" placeholder="What are we building?" required></textarea>
             </div>
-            <button class="btn btn-primary" type="submit">Send message</button>
-            <p class="form-note" id="formNote">Thanks — your message is ready to send via email. Opening your mail client now.</p>
+            <button class="btn btn-primary" id="submit-btn" type="submit">Send message</button>
+            <p class="form-note" id="formNote"></p>
           </form>
         </div>
       </div>
@@ -1086,29 +1066,29 @@
       document.querySelectorAll(".facts, #stats").forEach(function (el) { countObs.observe(el); });
 
       var games = [
-        { title: "Bat Robot Game", genre: "Action", url: "https://play.google.com/store/apps/details?id=com.pub.bat.robot.game", desc: "Pilot a mechanical bat through combat arenas, aerial dashes, and gadget-driven rescue missions.", icon: "https://play-lh.googleusercontent.com/7HXmm0H7jmXjO1JgsCv0phhUTRZ3f6swD9R5DzU1ZfazrgWyww71fTv57sLOMRyhtf8ZD5OQXdGB1s82Iao5uA=s0-br30", hue: 220 },
-        { title: "Army Vehicle Transporter Truck", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.pub.army.vehicle.transporter.truck", desc: "Haul tanks and jeeps across rugged routes with heavy-truck physics and convoy delivery jobs.", icon: "https://play-lh.googleusercontent.com/zeKSXbO-UfvyQOPjCOI60VRll21mQgcNn-hOU_gw5NVmwo1B-Sn1ytpDnNxGZSvN1EBS6098fqikc9G7funvPw=s0-br30", hue: 150 },
-        { title: "Flying Spider Hero", genre: "Action", url: "https://play.google.com/store/apps/details?id=com.pub.flying.spider.hero", desc: "Web-swing and fly across a city skyline, chaining combat combos and rooftop rescue objectives.", icon: "https://play-lh.googleusercontent.com/yAKHceS4vJTDx1zkKx_fUXnmU_xlHJEfT0fAXBuXk4vI0Qs36d2QDKyUgkG024xKvgyNYNs8KF8JTfQJJ-legLc=s0-br30", hue: 280 },
-        { title: "Police Transport Truck", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.pub.police.transport.truck", desc: "Secure high-value prisoners and cargo with police convoy driving, escorts, and timed drop-offs.", icon: "https://play-lh.googleusercontent.com/powZfufW3bix-GP8xvhDEKUsGvtc_q5TqPL7_hqoi-Jhd5WanhCFKwFc_GbIfaI66fZJ6J0uV40zq8l9-qtDNQ=s0-br30", hue: 205 },
-        { title: "Auto Car Dealership Game", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.PragmaStudios.AutoCarDealershipCarGame", desc: "Run a showroom: inspect, customize, and sell cars while managing a living dealership floor.", icon: "https://play-lh.googleusercontent.com/mte1ZWY8eSrL50VlHnAspd7-6W723zeImDxw40mZtG5izXxpcTh23bTImI9CAuLz4t3_PdpbcGw0yDRaTSxcXA=s0-br30", hue: 32 },
-        { title: "Bull Attack Bull Fighting Game", genre: "Action", url: "https://play.google.com/store/apps/details?id=com.pragmastudios.BullAttackBullFightingGame", desc: "Arena action with charging physics, dodge windows, and escalating bull-fight encounters.", icon: "https://play-lh.googleusercontent.com/xvVvVd6IvBnpEtnDhke_9lqmAaqPWuvFmj-RpBHo0DY3eD1jJVVz7G6C1eKhb2wdvVItfJ1nX_ZbvyY9jx2R=s0-br30", hue: 8 },
-        { title: "Pizza Boy Pizza Delivery Game", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.PragmaStudios.PizzaBoyPizzaDeliveryGame", desc: "Race scooters, bikes, cars, and a flying van through city traffic to hit delivery windows.", icon: "https://play-lh.googleusercontent.com/LK85NqdNVw-vOS01yyMPDGZpGDBf5AQESmkkgpx8kQtiCA4ePil7ksEIGTy0Sj3z7IAJ0c-6Ztz71DiP70YUcg=s0-br30", hue: 18 },
-        { title: "Border Police Officer Simulator", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.PragamStudio.BorderPoliceOfficerSimGame", desc: "Check documents, inspect vehicles, and lock down a busy border checkpoint under pressure.", icon: "https://play-lh.googleusercontent.com/9tL-FCS9IRn1Eo0We0TC4PGgFxrK4o1Fihu_6a-Q7wggejYoMHKuEK_A8ff10THqWGZXmXNLLtmrnOqrldvAbXc=s0-br30", hue: 195 },
-        { title: "Tile Match Puzzle Mahjong Game", genre: "Puzzle", url: "https://play.google.com/store/apps/details?id=com.PragmaStudios.TileMatchPuzzleMahjongGame", desc: "Classic mahjong matching with layered boards, clean telegraphs, and relaxing puzzle sessions.", icon: "https://play-lh.googleusercontent.com/7XVih6epUjJZPf-kBR-Knpm9si_N4sfUk4a4wFbMH3Seq9cgaor2g5_Of7zdKTMBipbysk_fRmn2mWIgy2E6k4E=s0-br30", hue: 265 },
-        { title: "Newspaper Delivery Boy Game 3D", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.PragmaStudios.NewspaperDeliveryBoyGame3d", desc: "Toss papers through suburban streets on a timed route with vehicle handling and daily goals.", icon: "https://play-lh.googleusercontent.com/LmZzx5iKh0_ga4GH8jBCH6dz-vW_bnistRgzt0s14Lwbdhz_qSc7KqjMYWjAZEtfmdbgLSgEPnpgil5xKq96CLk=s0-br30", hue: 48 },
-        { title: "Traffic Control Game 2025", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.PragmaStudios.TrafficControlGame2025", desc: "Direct intersections, prevent pile-ups, and keep a living city flowing at rush hour.", icon: "https://play-lh.googleusercontent.com/KefU2EtkLJE5cCxalCX8E9WbC7rXT7sX3AUmZdgEpW-D9nTON_YyU41IFqnI-Ye0R8xl61P8bLznjovQV02E5g=s0-br30", hue: 140 },
-        { title: "Taxi Game 2025 – Taxi Driver 3D", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.PragmaStudios.TaxiGame2025TaxiDriver3D", desc: "Pick up fares, read the city grid, and drive a 3D taxi career through weather and traffic.", icon: "https://play-lh.googleusercontent.com/fQB4ftxT80y-v3u1Q9-m3zV6rsg-SJAkHvc7P1_-Cyoe-7mF1FofL696pIuOPJgQ1f1EEABrfrmp4h6Xo1wp=s0-br30", hue: 55 },
-        { title: "Fire & Rescue Simulator", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.vx.fire.game.firefighter.rescue.simulator.truck.ambulance.emergency", desc: "Drive emergency trucks, spray fires, and clear building hazards in a full rescue loop.", icon: "https://play-lh.googleusercontent.com/fSYVvKknf9tDfyc0SYujncBLdREyN1xLlzmeTAdmAdqEzRQzayxtSdspQScNMj6kXN6xyc3na7nUm1s1UFPRsw=s0-br30", hue: 0 },
-        { title: "Offroad Mud Truck Snow Runner", genre: "Racing", url: "https://play.google.com/store/apps/details?id=com.offroad.mud.truck.games.runner.snow.simulator", desc: "Push mud and snow trucks through traction puzzles, steep climbs, and winter cargo runs.", icon: "https://play-lh.googleusercontent.com/rDeZOhusm1RPe0I4JHkM_eA551PfvVyBgEeh8-5EqrMi-HdBlis8xFTi0MeQGehAntSBSFWdcKQypgm7Z7kLrTE=s0-br30", hue: 25 },
-        { title: "Pet Mall Shopping Simulator", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.shopping.pet.game.simulator.manager.mall", desc: "Stock shelves, serve pet owners, and grow a bustling animal mall from a single stall.", icon: "https://play-lh.googleusercontent.com/UeeqyMkdD0l8aTx4_mLPpra8js6iXnfrxieVeSfOeBfJPMdCl8lIB0_N7CvIUXPcodJCX9R17YsKN5l4_TyM-G4=s0-br30", hue: 310 },
-        { title: "Ambulance Driving Rescue Doctor", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.ambulence.driving.rescue.simulator.doctor", desc: "Siren through traffic, reach patients, and complete hospital drop-offs against the clock.", icon: "https://play-lh.googleusercontent.com/8aodAp4c_Wv_7C24Y04s9B_JxOOCKRg499RCVIwvtlLhFTYW2WmJFZVDc0s4ns0LRz8U9mqiWtUmnq4sOj9A=s0-br30", hue: 350 },
-        { title: "Crazy Taxi Parking Stunt Driver", genre: "Racing", url: "https://play.google.com/store/apps/details?id=com.crazy.taxi.parking.driver.stunt.simulatin", desc: "Stunt parking and wild taxi handling — squeeze into tight bays after high-speed approaches.", icon: "https://play-lh.googleusercontent.com/gpg8w373wK5eKATOOixzkXP3WXh2jXpC17lZy3JNvKlfD1e9KfLN9oKQYZp7pRT8ziemV6IP3g4TX_QFhmNzNw=s0-br30", hue: 40 },
-        { title: "Pick Up Drop Simulator", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.pick.up.drop.simulator.game", desc: "Collect passengers and cargo, plot drop-off routes, and keep a transport loop running smoothly.", icon: "https://play-lh.googleusercontent.com/sXRw_cwVos5S9fYk6fdc-hQMMnm9JvBFMSaHcXuGk4uFqBiRhhXiyyT7Z_uOMv39ojADlxQWRfQLuHf1J_VTQw=s0-br30", hue: 175 },
-        { title: "Passengers Simulator", genre: "Casual", url: "https://play.google.com/store/apps/details?id=com.pub.sg.passengers.simulator", desc: "A prank sandbox with one job: tease passengers through interactive tricks and reactions.", icon: "https://play-lh.googleusercontent.com/CFK5VWxmD-KrrA1yb3clzntcEWOB2mLKC3sCXG-igbMG64kM1eI7MvRC9PvlRolPp9ZmvEN4VgbYDSELd4EU=s0-br30", hue: 300 },
-        { title: "Obby Speed Keyboard", genre: "Casual", url: "https://play.google.com/store/apps/details?id=com.pub.sg.obby.speed.keyboard", desc: "Obstacle-course running with keyboard-speed challenges, tight timing, and arcade momentum.", icon: "https://play-lh.googleusercontent.com/0UcJ4buOElv_ofJ1JaxCJ_6Po5_1btTPZcZ43fWPFOh-5CPKW7fAXEwihl_AltIkyYPAR0gEXQh4VWKVdC4CJMs=s0-br30", hue: 165 },
-        { title: "Crazy Surgeon Simulator", genre: "Casual", url: "https://play.google.com/store/apps/details?id=com.pub.sg.crazy.surgeon", desc: "Over-the-top operating-room chaos — timing, tools, and slapstick medical mini-objectives.", icon: "https://play-lh.googleusercontent.com/bCvjfXkVR12uqd7sLRfOJ6jaS8Nwqmbip2GUW19HFx3vWq_AbgIekA_PyoyRY8m0HKpR8crzg2CKyHeiox3hg0M=s0-br30", hue: 330 },
-        { title: "Bird Smash", genre: "Arcade", url: "https://play.google.com/store/apps/details?id=com.pub.sg.bird.smash", desc: "Fast arcade reflex play: smash, dodge, and chain combos in short high-score sessions.", icon: "https://play-lh.googleusercontent.com/gNV22UPAVSBGgzX4q3SaLovmwWAh0zFV2yNB6Bi50l69fvPlGjZ3C7ipg7SQYKUWvDjH1JIQhfkB9dodg-Lvlkg=s0-br30", hue: 95 },
-        { title: "Euro Truck Driving", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.pub.euro.truck.driving", desc: "Long-haul cargo runs with truck physics, highway missions, weather, and customizable steering.", icon: "https://play-lh.googleusercontent.com/tv4xDgjA9Of_2DT7OiO3NAyav42u0b5Vf2Iq130xHeksoS65a4ZV8AotCcRozouSBnrsim5_8HaOIKMATzg7=s0-br30", hue: 210 }
+        { title: "Bat Robot Game", genre: "Action", url: "https://play.google.com/store/apps/details?id=com.pub.bat.robot.game", desc: "Pilot a mechanical bat through combat arenas, aerial dashes, and gadget-driven rescue missions.", icon: "https://play-lh.googleusercontent.com/7HXmm0H7jmXjO1JgsCv0phhUTRZ3f6swD9R5DzU1ZfazrgWyww71fTv57sLOMRyhtf8ZD5OQXdGB1s82Iao5uA=s0-br30", hue: 220, downloads: "10K+ downloads" },
+        { title: "Army Vehicle Transporter Truck", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.pub.army.vehicle.transporter.truck", desc: "Haul tanks and jeeps across rugged routes with heavy-truck physics and convoy delivery jobs.", icon: "https://play-lh.googleusercontent.com/zeKSXbO-UfvyQOPjCOI60VRll21mQgcNn-hOU_gw5NVmwo1B-Sn1ytpDnNxGZSvN1EBS6098fqikc9G7funvPw=s0-br30", hue: 150, downloads: "5K+ downloads" },
+        { title: "Flying Spider Hero", genre: "Action", url: "https://play.google.com/store/apps/details?id=com.pub.flying.spider.hero", desc: "Web-swing and fly across a city skyline, chaining combat combos and rooftop rescue objectives.", icon: "https://play-lh.googleusercontent.com/yAKHceS4vJTDx1zkKx_fUXnmU_xlHJEfT0fAXBuXk4vI0Qs36d2QDKyUgkG024xKvgyNYNs8KF8JTfQJJ-legLc=s0-br30", hue: 280, downloads: "50K+ downloads" },
+        { title: "Police Transport Truck", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.pub.police.transport.truck", desc: "Secure high-value prisoners and cargo with police convoy driving, escorts, and timed drop-offs.", icon: "https://play-lh.googleusercontent.com/powZfufW3bix-GP8xvhDEKUsGvtc_q5TqPL7_hqoi-Jhd5WanhCFKwFc_GbIfaI66fZJ6J0uV40zq8l9-qtDNQ=s0-br30", hue: 205, downloads: "10K+ downloads" },
+        { title: "Auto Car Dealership Game", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.PragmaStudios.AutoCarDealershipCarGame", desc: "Run a showroom: inspect, customize, and sell cars while managing a living dealership floor.", icon: "https://play-lh.googleusercontent.com/mte1ZWY8eSrL50VlHnAspd7-6W723zeImDxw40mZtG5izXxpcTh23bTImI9CAuLz4t3_PdpbcGw0yDRaTSxcXA=s0-br30", hue: 32, downloads: "100K+ downloads" },
+        { title: "Bull Attack Bull Fighting Game", genre: "Action", url: "https://play.google.com/store/apps/details?id=com.pragmastudios.BullAttackBullFightingGame", desc: "Arena action with charging physics, dodge windows, and escalating bull-fight encounters.", icon: "https://play-lh.googleusercontent.com/xvVvVd6IvBnpEtnDhke_9lqmAaqPWuvFmj-RpBHo0DY3eD1jJVVz7G6C1eKhb2wdvVItfJ1nX_ZbvyY9jx2R=s0-br30", hue: 8, downloads: "10K+ downloads" },
+        { title: "Pizza Boy Pizza Delivery Game", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.PragmaStudios.PizzaBoyPizzaDeliveryGame", desc: "Race scooters, bikes, cars, and a flying van through city traffic to hit delivery windows.", icon: "https://play-lh.googleusercontent.com/LK85NqdNVw-vOS01yyMPDGZpGDBf5AQESmkkgpx8kQtiCA4ePil7ksEIGTy0Sj3z7IAJ0c-6Ztz71DiP70YUcg=s0-br30", hue: 18, downloads: "10K+ downloads" },
+        { title: "Border Police Officer Simulator", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.PragamStudio.BorderPoliceOfficerSimGame", desc: "Check documents, inspect vehicles, and lock down a busy border checkpoint under pressure.", icon: "https://play-lh.googleusercontent.com/9tL-FCS9IRn1Eo0We0TC4PGgFxrK4o1Fihu_6a-Q7wggejYoMHKuEK_A8ff10THqWGZXmXNLLtmrnOqrldvAbXc=s0-br30", hue: 195, downloads: "1K+ downloads" },
+        { title: "Tile Match Puzzle Mahjong Game", genre: "Puzzle", url: "https://play.google.com/store/apps/details?id=com.PragmaStudios.TileMatchPuzzleMahjongGame", desc: "Classic mahjong matching with layered boards, clean telegraphs, and relaxing puzzle sessions.", icon: "https://play-lh.googleusercontent.com/7XVih6epUjJZPf-kBR-Knpm9si_N4sfUk4a4wFbMH3Seq9cgaor2g5_Of7zdKTMBipbysk_fRmn2mWIgy2E6k4E=s0-br30", hue: 265, downloads: "100+ downloads" },
+        { title: "Newspaper Delivery Boy Game 3D", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.PragmaStudios.NewspaperDeliveryBoyGame3d", desc: "Toss papers through suburban streets on a timed route with vehicle handling and daily goals.", icon: "https://play-lh.googleusercontent.com/LmZzx5iKh0_ga4GH8jBCH6dz-vW_bnistRgzt0s14Lwbdhz_qSc7KqjMYWjAZEtfmdbgLSgEPnpgil5xKq96CLk=s0-br30", hue: 48, downloads: "1K+ downloads" },
+        { title: "Traffic Control Game 2025", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.PragmaStudios.TrafficControlGame2025", desc: "Direct intersections, prevent pile-ups, and keep a living city flowing at rush hour.", icon: "https://play-lh.googleusercontent.com/KefU2EtkLJE5cCxalCX8E9WbC7rXT7sX3AUmZdgEpW-D9nTON_YyU41IFqnI-Ye0R8xl61P8bLznjovQV02E5g=s0-br30", hue: 140, downloads: "10K+ downloads" },
+        { title: "Taxi Game 2025 – Taxi Driver 3D", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.PragmaStudios.TaxiGame2025TaxiDriver3D", desc: "Pick up fares, read the city grid, and drive a 3D taxi career through weather and traffic.", icon: "https://play-lh.googleusercontent.com/fQB4ftxT80y-v3u1Q9-m3zV6rsg-SJAkHvc7P1_-Cyoe-7mF1FofL696pIuOPJgQ1f1EEABrfrmp4h6Xo1wp=s0-br30", hue: 55, downloads: "5K+ downloads" },
+        { title: "Fire & Rescue Simulator", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.vx.fire.game.firefighter.rescue.simulator.truck.ambulance.emergency", desc: "Drive emergency trucks, spray fires, and clear building hazards in a full rescue loop.", icon: "https://play-lh.googleusercontent.com/fSYVvKknf9tDfyc0SYujncBLdREyN1xLlzmeTAdmAdqEzRQzayxtSdspQScNMj6kXN6xyc3na7nUm1s1UFPRsw=s0-br30", hue: 0, downloads: "1K+ downloads" },
+        { title: "Offroad Mud Truck Snow Runner", genre: "Racing", url: "https://play.google.com/store/apps/details?id=com.offroad.mud.truck.games.runner.snow.simulator", desc: "Push mud and snow trucks through traction puzzles, steep climbs, and winter cargo runs.", icon: "https://play-lh.googleusercontent.com/rDeZOhusm1RPe0I4JHkM_eA551PfvVyBgEeh8-5EqrMi-HdBlis8xFTi0MeQGehAntSBSFWdcKQypgm7Z7kLrTE=s0-br30", hue: 25, downloads: "100K+ downloads" },
+        { title: "Pet Mall Shopping Simulator", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.shopping.pet.game.simulator.manager.mall", desc: "Stock shelves, serve pet owners, and grow a bustling animal mall from a single stall.", icon: "https://play-lh.googleusercontent.com/UeeqyMkdD0l8aTx4_mLPpra8js6iXnfrxieVeSfOeBfJPMdCl8lIB0_N7CvIUXPcodJCX9R17YsKN5l4_TyM-G4=s0-br30", hue: 310, downloads: "10K+ downloads" },
+        { title: "Ambulance Driving Rescue Doctor", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.ambulence.driving.rescue.simulator.doctor", desc: "Siren through traffic, reach patients, and complete hospital drop-offs against the clock.", icon: "https://play-lh.googleusercontent.com/8aodAp4c_Wv_7C24Y04s9B_JxOOCKRg499RCVIwvtlLhFTYW2WmJFZVDc0s4ns0LRz8U9mqiWtUmnq4sOj9A=s0-br30", hue: 350, downloads: "10K+ downloads" },
+        { title: "Crazy Taxi Parking Stunt Driver", genre: "Racing", url: "https://play.google.com/store/apps/details?id=com.crazy.taxi.parking.driver.stunt.simulatin", desc: "Stunt parking and wild taxi handling — squeeze into tight bays after high-speed approaches.", icon: "https://play-lh.googleusercontent.com/gpg8w373wK5eKATOOixzkXP3WXh2jXpC17lZy3JNvKlfD1e9KfLN9oKQYZp7pRT8ziemV6IP3g4TX_QFhmNzNw=s0-br30", hue: 40, downloads: "1M+ downloads" },
+        { title: "Pick Up Drop Simulator", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.pick.up.drop.simulator.game", desc: "Collect passengers and cargo, plot drop-off routes, and keep a transport loop running smoothly.", icon: "https://play-lh.googleusercontent.com/sXRw_cwVos5S9fYk6fdc-hQMMnm9JvBFMSaHcXuGk4uFqBiRhhXiyyT7Z_uOMv39ojADlxQWRfQLuHf1J_VTQw=s0-br30", hue: 175, downloads: "10K+ downloads" },
+        { title: "Passengers Simulator", genre: "Casual", url: "https://play.google.com/store/apps/details?id=com.pub.sg.passengers.simulator", desc: "A prank sandbox with one job: tease passengers through interactive tricks and reactions.", icon: "https://play-lh.googleusercontent.com/CFK5VWxmD-KrrA1yb3clzntcEWOB2mLKC3sCXG-igbMG64kM1eI7MvRC9PvlRolPp9ZmvEN4VgbYDSELd4EU=s0-br30", hue: 300, downloads: "10K+ downloads" },
+        { title: "Obby Speed Keyboard", genre: "Casual", url: "https://play.google.com/store/apps/details?id=com.pub.sg.obby.speed.keyboard", desc: "Obstacle-course running with keyboard-speed challenges, tight timing, and arcade momentum.", icon: "https://play-lh.googleusercontent.com/0UcJ4buOElv_ofJ1JaxCJ_6Po5_1btTPZcZ43fWPFOh-5CPKW7fAXEwihl_AltIkyYPAR0gEXQh4VWKVdC4CJMs=s0-br30", hue: 165, downloads: "1K+ downloads" },
+        { title: "Crazy Surgeon Simulator", genre: "Casual", url: "https://play.google.com/store/apps/details?id=com.pub.sg.crazy.surgeon", desc: "Over-the-top operating-room chaos — timing, tools, and slapstick medical mini-objectives.", icon: "https://play-lh.googleusercontent.com/bCvjfXkVR12uqd7sLRfOJ6jaS8Nwqmbip2GUW19HFx3vWq_AbgIekA_PyoyRY8m0HKpR8crzg2CKyHeiox3hg0M=s0-br30", hue: 330, downloads: "500+ downloads" },
+        { title: "Bird Smash", genre: "Arcade", url: "https://play.google.com/store/apps/details?id=com.pub.sg.bird.smash", desc: "Fast arcade reflex play: smash, dodge, and chain combos in short high-score sessions.", icon: "https://play-lh.googleusercontent.com/gNV22UPAVSBGgzX4q3SaLovmwWAh0zFV2yNB6Bi50l69fvPlGjZ3C7ipg7SQYKUWvDjH1JIQhfkB9dodg-Lvlkg=s0-br30", hue: 95, downloads: "New release" },
+        { title: "Euro Truck Driving", genre: "Simulation", url: "https://play.google.com/store/apps/details?id=com.pub.euro.truck.driving", desc: "Long-haul cargo runs with truck physics, highway missions, weather, and customizable steering.", icon: "https://play-lh.googleusercontent.com/tv4xDgjA9Of_2DT7OiO3NAyav42u0b5Vf2Iq130xHeksoS65a4ZV8AotCcRozouSBnrsim5_8HaOIKMATzg7=s0-br30", hue: 210, downloads: "1K+ downloads" }
       ];
 
       var grid = document.getElementById("gamesGrid");
@@ -1121,13 +1101,13 @@
         card.rel = "noopener noreferrer";
         card.innerHTML =
           '<div class="game-mark" style="background:linear-gradient(145deg,hsl(' + g.hue + ' 55% 18%), #101016)">' +
-            '<span class="letter">' + g.title.charAt(0) + "</span>" +
             '<img class="game-icon" src="' + g.icon + '" alt="' + g.title + ' icon" loading="lazy" onerror="this.remove()">' +
           "</div>" +
           '<div class="pad">' +
             '<span class="genre">' + g.genre + "</span>" +
             "<h3>" + g.title + "</h3>" +
             "<p>" + g.desc + "</p>" +
+            '<p style="font-size:12px; color:#888;">📥 ' + g.downloads + "</p>" +
             '<span class="store-btn">Play Store ' + ext + "</span>" +
           "</div>" +
           '<div class="overlay"><span>View on Play Store</span></div>';
@@ -1135,15 +1115,26 @@
         revealObs.observe(card);
       });
 
+      emailjs.init("mwyiLUcTd4hrY7INr");
       document.getElementById("contactForm").addEventListener("submit", function (e) {
         e.preventDefault();
-        var name = document.getElementById("name").value.trim();
-        var email = document.getElementById("email").value.trim();
-        var message = document.getElementById("message").value.trim();
+        var btn = document.getElementById("submit-btn");
         var note = document.getElementById("formNote");
-        note.style.display = "block";
-        var body = encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message);
-        window.location.href = "mailto:muhammad.ahmad.gamedev@gmail.com?subject=" + encodeURIComponent("Portfolio inquiry from " + name) + "&body=" + body;
+        btn.disabled = true;
+        btn.textContent = "Sending...";
+        emailjs.sendForm("service_gz9lv5u", "template_61rgadm", this).then(function () {
+          note.textContent = "✅ Message sent! I will get back to you within 24 hours.";
+          note.style.color = "#4ade80";
+          note.style.display = "block";
+          document.getElementById("contactForm").reset();
+        }).catch(function () {
+          note.textContent = "❌ Something went wrong. Please email me at muhammad.ahmad.gamedev@gmail.com";
+          note.style.color = "#f87171";
+          note.style.display = "block";
+        }).finally(function () {
+          btn.disabled = false;
+          btn.textContent = "Send message";
+        });
       });
     })();
   </script>
