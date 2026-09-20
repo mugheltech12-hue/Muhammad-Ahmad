@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Muhammad Ahmad - Unity Game Developer. 12+ shipped games, 3D simulation specialist, AI-assisted development.">
+    <title>Muhammad Ahmad - Game Developer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #0f3460;
+            --accent: #e94560;
+            --light: #f4f4f4;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        /* NAVIGATION */
+        nav {
+            background: var(--primary);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(15, 52, 96, 0.9) 100%);
+            color: var(--light);
+            padding: 6rem 2rem;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+
+        .hero .buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #d63a52;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* SECTION */
+        section {
+            padding: 4rem 2rem;
+            background: var(--light);
+            margin: 2rem 0;
+            border-radius: 10px;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 1rem;
+        }
+
+        /* GAMES SHOWCASE */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .game-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(233, 69, 96, 0.2);
+        }
+
+        .game-card-img {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .game-card-content {
+            padding: 1.5rem;
+        }
+
+        .game-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .game-card p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .game-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: var(--secondary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .game-card-links {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .game-card a {
+            flex: 1;
+            padding: 0.7rem;
+            background: var(--accent);
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .game-card a:hover {
+            background: #d63a52;
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--accent);
+        }
+
+        .skill-box h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-box ul {
+            list-style: none;
+        }
+
+        .skill-box li {
+            padding: 0.5rem 0;
+            color: #666;
+        }
+
+        .skill-box li:before {
+            content: "✓ ";
+            color: var(--accent);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* EXPERIENCE */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            border-left: 2px solid var(--accent);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .timeline-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .company {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .timeline-item .date {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .timeline-item p {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* CONTACT */
+        .contact-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: var(--accent);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--primary);
+            color: var(--light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="container">
+            <h1>🎮 MA</h1>
+            <ul>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="container">
+            <h1>Muhammad Ahmad</h1>
+            <p>Unity Game Developer | 3D Games Specialist | 12+ Shipped Titles</p>
+            <p style="font-size: 1rem; color: #ccc;">Bahawalpur, Pakistan 🇵🇰 | AI-Assisted Game Development</p>
+            <div class="buttons">
+                <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                <a href="https://linkedin.com/in/muhammad-ahmad-gamedev" class="btn btn-secondary" target="_blank">View LinkedIn</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- GAMES SHOWCASE -->
+    <section id="games">
+        <div class="container">
+            <h2>🎮 Published Games</h2>
+            <div class="games-grid">
+                <!-- Game 1 -->
+                <div class="game-card">
+                    <div class="game-card-img">🚗 Euro Truck</div>
+                    <div class="game-card-content">
+                        <h3>Euro Truck Driving Simulator</h3>
+                        <p>3D heavy-vehicle cargo simulator with truck physics, highway delivery missions, weather systems, and customizable steering.</p>
+                        <div class="game-tags">
+                            <span class="tag">Vehicle Physics</span>
+                            <span class="tag">Android</span>
+                            <span class="tag">Monetization</span>
+                        </div>
+                        <div class="game-card-links">
+                            <a href="https://play.google.com/store" target="_blank">Play Store</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game 2 -->
+                <div class="game-card">
+                    <div class="game-card-img">🚁 Flying Spider</div>
+                    <div class="game-card-content">
+                        <h3>Flying Spider Hero Rescue</h3>
+                        <p>3D open-world action title with web-swinging and flight physics, combat combos, city rescue missions, and camera targeting.</p>
+                        <div class="game-tags">
+                            <span class="tag">Combat AI</span>
+                            <span class="tag">Physics</span>
+                            <span class="tag">Open World</span>
+                        </div>
+                        <div class="game-card-links">
+                            <a href="https://play.google.com/store" target="_blank">Play Store</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game 3 -->
+                <div class="game-card">
+                    <div class="game-card-img">🍕 Pizza Boy</div>
+                    <div class="game-card-content">
+                        <h3>Pizza Boy Pizza Delivery</h3>
+                        <p>3D timed city delivery game across scooters, bikes, cars, and a flying van with urban traffic maps and varied vehicles.</p>
+                        <div class="game-tags">
+                            <span class="tag">Vehicle Physics</span>
+                            <span class="tag">UI/UX</span>
+                            <span class="tag">Mobile</span>
+                        </div>
+                        <div class="game-card-links">
+                            <a href="https://play.google.com/store" target="_blank">Play Store</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game 4 -->
+                <div class="game-card">
+                    <div class="game-card-img">🚒 Firefighter</div>
+                    <div class="game-card-content">
+                        <h3>Firefighter Truck Simulator</h3>
+                        <p>3D emergency driving and fire-rescue loop with water-spray systems, building hazard objectives, and realistic physics.</p>
+                        <div class="game-tags">
+                            <span class="tag">Simulation</span>
+                            <span class="tag">Physics</span>
+                            <span class="tag">Android</span>
+                        </div>
+                        <div class="game-card-links">
+                            <a href="https://play.google.com/store" target="_blank">Play Store</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game 5 -->
+                <div class="game-card">
+                    <div class="game-card-img">😂 Passengers</div>
+                    <div class="game-card-content">
+                        <h3>Passengers Simulator</h3>
+                        <p>3D prank game with one core loop: annoy and tease passengers through interactive tricks and funny reactions.</p>
+                        <div class="game-tags">
+                            <span class="tag">Casual</span>
+                            <span class="tag">NPC AI</span>
+                            <span class="tag">Interaction</span>
+                        </div>
+                        <div class="game-card-links">
+                            <a href="https://play.google.com/store" target="_blank">Play Store</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game 6 -->
+                <div class="game-card">
+                    <div class="game-card-img">🏎️ Roadbound</div>
+                    <div class="game-card-content">
+                        <h3>Roadbound (Coming Soon)</h3>
+                        <p>3D open-world transport and career simulation for Steam. Vehicle physics, NPC pick-up/drop-off, and living traffic systems.</p>
+                        <div class="game-tags">
+                            <span class="tag">Open World</span>
+                            <span class="tag">Steam</span>
+                            <span class="tag">NPC Systems</span>
+                        </div>
+                        <div class="game-card-links">
+                            <a href="https://steam.com" target="_blank">Steam Page</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; color: #666;">
+                <strong>12+ games shipped on Play Store & Steam</strong> | Download count: 500K+
+            </p>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <div class="container">
+            <h2>💻 Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-box">
+                    <h3>Game Development</h3>
+                    <ul>
+                        <li>Unity 3D</li>
+                        <li>C# Programming</li>
+                        <li>Android Development</li>
+                        <li>Steam/PC Publishing</li>
+                    </ul>
+                </div>
+
+                <div class="skill-box">
+                    <h3>Gameplay Systems</h3>
+                    <ul>
+                        <li>Vehicle Physics (Custom)</li>
+                        <li>NPC AI & Navigation</li>
+                        <li>Traffic Systems</li>
+                        <li>Mission Loops</li>
+                    </ul>
+                </div>
+
+                <div class="skill-box">
+                    <h3>Tools & Pipeline</h3>
+                    <ul>
+                        <li>Cinemachine & Timeline</li>
+                        <li>Git/GitHub</li>
+                        <li>Performance Profiling</li>
+                        <li>ScriptableObjects</li>
+                    </ul>
+                </div>
+
+                <div class="skill-box">
+                    <h3>Monetization & Analytics</h3>
+                    <ul>
+                        <li>AppLovin MAX</li>
+                        <li>Google AdMob</li>
+                        <li>Firebase Analytics</li>
+                        <li>SolarEngine</li>
+                    </ul>
+                </div>
+
+                <div class="skill-box">
+                    <h3>AI & Optimization</h3>
+                    <ul>
+                        <li>AI-Assisted Development</li>
+                        <li>Draw Call Optimization</li>
+                        <li>Memory Management</li>
+                        <li>60 FPS Target Optimization</li>
+                    </ul>
+                </div>
+
+                <div class="skill-box">
+                    <h3>Other</h3>
+                    <ul>
+                        <li>Google Play Console</li>
+                        <li>Shader Graph</li>
+                        <li>Level Design</li>
+                        <li>UI/UX Implementation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <div class="container">
+            <h2>🏢 Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Unity Game Developer</h3>
+                    <p class="company">OZI Technology, Lahore</p>
+                    <p class="date">Jun 2026 - Present</p>
+                    <p>Owned 3D simulation and arcade mobile games in Unity 3D and C#, from prototype through Google Play deployment. Used AI agents to accelerate prototyping and gameplay implementation. Integrated AppLovin MAX and Firebase Analytics.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Unity Game Developer</h3>
+                    <p class="company">Pragma Tech, Bahawalpur</p>
+                    <p class="date">Aug 2025 - Jun 2026</p>
+                    <p>Shipped 4+ 3D multi-vehicle simulation titles (Pizza Boy, Newspaper Delivery, Firefighter Truck, Auto Car Dealership). Built custom vehicle physics, traffic AI, and pedestrian navigation systems.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Unity Game Developer (Contract)</h3>
+                    <p class="company">Doxfen Private Limited - Remote</p>
+                    <p class="date">Oct 2025 - Dec 2025</p>
+                    <p>Developed core 3D gameplay for Roadbound (Steam). Implemented vehicle physics, NPC pick-up/drop-off systems, and living traffic for open-world experience.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Unity Game Developer</h3>
+                    <p class="company">AJ Tech, Bahawalpur</p>
+                    <p class="date">Jul 2024 - Aug 2025</p>
+                    <p>Designed 3D level layouts, obstacle collision logic, and reward loops for mobile games. Connected games to live services and debugged performance across Android devices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: var(--light); text-align: center;">
+        <div class="container">
+            <h2 style="color: var(--accent);">📊 By The Numbers</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <div>
+                    <h3 style="font-size: 2.5rem; color: var(--accent);">12+</h3>
+                    <p>Games Shipped</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 2.5rem; color: var(--accent);">500K+</h3>
+                    <p>Downloads</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 2.5rem; color: var(--accent);">2+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 2.5rem; color: var(--accent);">4</h3>
+                    <p>Companies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="container">
+            <h2>📧 Get In Touch</h2>
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">
+                Open to opportunities in Lahore, Islamabad, and remote positions. Let's build something amazing together!
+            </p>
+            <div class="contact-links">
+                <a href="mailto:muhammad.ahmad.gamedev@gmail.com" class="contact-link">
+                    📧 Email
+                </a>
+                <a href="https://linkedin.com/in/muhammad-ahmad-gamedev" class="contact-link" target="_blank">
+                    💼 LinkedIn
+                </a>
+                <a href="https://github.com/mugheltech12-hue" class="contact-link" target="_blank">
+                    💻 GitHub
+                </a>
+                <a href="https://play.google.com/store/apps/dev?id=YOUR_DEV_ID" class="contact-link" target="_blank">
+                    🎮 Play Store
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Muhammad Ahmad. All rights reserved. | <a href="https://github.com/mugheltech12-hue/game-portfolio" target="_blank" style="color: var(--accent); text-decoration: none;">View Source</a></p>
+    </footer>
+</body>
+</html>
