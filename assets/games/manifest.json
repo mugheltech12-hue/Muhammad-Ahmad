@@ -1,0 +1,209 @@
+{
+    "com.pub.bat.robot.game":  {
+                                   "icon":  "assets/games/com.pub.bat.robot.game/icon.webp",
+                                   "shots":  [
+                                                 "assets/games/com.pub.bat.robot.game/ss1.webp",
+                                                 "assets/games/com.pub.bat.robot.game/ss2.webp",
+                                                 "assets/games/com.pub.bat.robot.game/ss3.webp",
+                                                 "assets/games/com.pub.bat.robot.game/ss4.webp"
+                                             ]
+                               },
+    "com.pub.army.vehicle.transporter.truck":  {
+                                                   "icon":  "assets/games/com.pub.army.vehicle.transporter.truck/icon.webp",
+                                                   "shots":  [
+                                                                 "assets/games/com.pub.army.vehicle.transporter.truck/ss1.webp",
+                                                                 "assets/games/com.pub.army.vehicle.transporter.truck/ss2.webp",
+                                                                 "assets/games/com.pub.army.vehicle.transporter.truck/ss3.webp",
+                                                                 "assets/games/com.pub.army.vehicle.transporter.truck/ss4.webp"
+                                                             ]
+                                               },
+    "com.pub.flying.spider.hero":  {
+                                       "icon":  "assets/games/com.pub.flying.spider.hero/icon.webp",
+                                       "shots":  [
+                                                     "assets/games/com.pub.flying.spider.hero/ss1.webp",
+                                                     "assets/games/com.pub.flying.spider.hero/ss2.webp",
+                                                     "assets/games/com.pub.flying.spider.hero/ss3.webp",
+                                                     "assets/games/com.pub.flying.spider.hero/ss4.webp"
+                                                 ]
+                                   },
+    "com.pub.police.transport.truck":  {
+                                           "icon":  "assets/games/com.pub.police.transport.truck/icon.webp",
+                                           "shots":  [
+                                                         "assets/games/com.pub.police.transport.truck/ss1.webp",
+                                                         "assets/games/com.pub.police.transport.truck/ss2.webp",
+                                                         "assets/games/com.pub.police.transport.truck/ss3.webp",
+                                                         "assets/games/com.pub.police.transport.truck/ss4.webp"
+                                                     ]
+                                       },
+    "com.PragmaStudios.AutoCarDealershipCarGame":  {
+                                                       "icon":  "assets/games/com.PragmaStudios.AutoCarDealershipCarGame/icon.webp",
+                                                       "shots":  [
+                                                                     "assets/games/com.PragmaStudios.AutoCarDealershipCarGame/ss1.webp",
+                                                                     "assets/games/com.PragmaStudios.AutoCarDealershipCarGame/ss2.webp",
+                                                                     "assets/games/com.PragmaStudios.AutoCarDealershipCarGame/ss3.webp",
+                                                                     "assets/games/com.PragmaStudios.AutoCarDealershipCarGame/ss4.webp"
+                                                                 ]
+                                                   },
+    "com.pragmastudios.BullAttackBullFightingGame":  {
+                                                         "icon":  "assets/games/com.pragmastudios.BullAttackBullFightingGame/icon.webp",
+                                                         "shots":  [
+                                                                       "assets/games/com.pragmastudios.BullAttackBullFightingGame/ss1.webp",
+                                                                       "assets/games/com.pragmastudios.BullAttackBullFightingGame/ss2.webp",
+                                                                       "assets/games/com.pragmastudios.BullAttackBullFightingGame/ss3.webp",
+                                                                       "assets/games/com.pragmastudios.BullAttackBullFightingGame/ss4.webp"
+                                                                   ]
+                                                     },
+    "com.PragmaStudios.PizzaBoyPizzaDeliveryGame":  {
+                                                        "icon":  "assets/games/com.PragmaStudios.PizzaBoyPizzaDeliveryGame/icon.webp",
+                                                        "shots":  [
+                                                                      "assets/games/com.PragmaStudios.PizzaBoyPizzaDeliveryGame/ss1.webp",
+                                                                      "assets/games/com.PragmaStudios.PizzaBoyPizzaDeliveryGame/ss2.webp",
+                                                                      "assets/games/com.PragmaStudios.PizzaBoyPizzaDeliveryGame/ss3.webp",
+                                                                      "assets/games/com.PragmaStudios.PizzaBoyPizzaDeliveryGame/ss4.webp"
+                                                                  ]
+                                                    },
+    "com.PragamStudio.BorderPoliceOfficerSimGame":  {
+                                                        "icon":  "assets/games/com.PragamStudio.BorderPoliceOfficerSimGame/icon.webp",
+                                                        "shots":  [
+                                                                      "assets/games/com.PragamStudio.BorderPoliceOfficerSimGame/ss1.webp",
+                                                                      "assets/games/com.PragamStudio.BorderPoliceOfficerSimGame/ss2.webp",
+                                                                      "assets/games/com.PragamStudio.BorderPoliceOfficerSimGame/ss3.webp",
+                                                                      "assets/games/com.PragamStudio.BorderPoliceOfficerSimGame/ss4.webp"
+                                                                  ]
+                                                    },
+    "com.PragmaStudios.TileMatchPuzzleMahjongGame":  {
+                                                         "icon":  "assets/games/com.PragmaStudios.TileMatchPuzzleMahjongGame/icon.webp",
+                                                         "shots":  [
+                                                                       "assets/games/com.PragmaStudios.TileMatchPuzzleMahjongGame/ss1.webp",
+                                                                       "assets/games/com.PragmaStudios.TileMatchPuzzleMahjongGame/ss2.webp",
+                                                                       "assets/games/com.PragmaStudios.TileMatchPuzzleMahjongGame/ss3.webp",
+                                                                       "assets/games/com.PragmaStudios.TileMatchPuzzleMahjongGame/ss4.webp"
+                                                                   ]
+                                                     },
+    "com.PragmaStudios.NewspaperDeliveryBoyGame3d":  {
+                                                         "icon":  "assets/games/com.PragmaStudios.NewspaperDeliveryBoyGame3d/icon.webp",
+                                                         "shots":  [
+                                                                       "assets/games/com.PragmaStudios.NewspaperDeliveryBoyGame3d/ss1.webp",
+                                                                       "assets/games/com.PragmaStudios.NewspaperDeliveryBoyGame3d/ss2.webp",
+                                                                       "assets/games/com.PragmaStudios.NewspaperDeliveryBoyGame3d/ss3.webp",
+                                                                       "assets/games/com.PragmaStudios.NewspaperDeliveryBoyGame3d/ss4.webp"
+                                                                   ]
+                                                     },
+    "com.PragmaStudios.TrafficControlGame2025":  {
+                                                     "icon":  "assets/games/com.PragmaStudios.TrafficControlGame2025/icon.webp",
+                                                     "shots":  [
+                                                                   "assets/games/com.PragmaStudios.TrafficControlGame2025/ss1.webp",
+                                                                   "assets/games/com.PragmaStudios.TrafficControlGame2025/ss2.webp",
+                                                                   "assets/games/com.PragmaStudios.TrafficControlGame2025/ss3.webp",
+                                                                   "assets/games/com.PragmaStudios.TrafficControlGame2025/ss4.webp"
+                                                               ]
+                                                 },
+    "com.PragmaStudios.TaxiGame2025TaxiDriver3D":  {
+                                                       "icon":  "assets/games/com.PragmaStudios.TaxiGame2025TaxiDriver3D/icon.webp",
+                                                       "shots":  [
+                                                                     "assets/games/com.PragmaStudios.TaxiGame2025TaxiDriver3D/ss1.webp",
+                                                                     "assets/games/com.PragmaStudios.TaxiGame2025TaxiDriver3D/ss2.webp",
+                                                                     "assets/games/com.PragmaStudios.TaxiGame2025TaxiDriver3D/ss3.webp",
+                                                                     "assets/games/com.PragmaStudios.TaxiGame2025TaxiDriver3D/ss4.webp"
+                                                                 ]
+                                                   },
+    "com.vx.fire.game.firefighter.rescue.simulator.truck.ambulance.emergency":  {
+                                                                                    "icon":  "assets/games/com.vx.fire.game.firefighter.rescue.simulator.truck.ambulance.emergency/icon.webp",
+                                                                                    "shots":  [
+                                                                                                  "assets/games/com.vx.fire.game.firefighter.rescue.simulator.truck.ambulance.emergency/ss1.webp",
+                                                                                                  "assets/games/com.vx.fire.game.firefighter.rescue.simulator.truck.ambulance.emergency/ss2.webp",
+                                                                                                  "assets/games/com.vx.fire.game.firefighter.rescue.simulator.truck.ambulance.emergency/ss3.webp",
+                                                                                                  "assets/games/com.vx.fire.game.firefighter.rescue.simulator.truck.ambulance.emergency/ss4.webp"
+                                                                                              ]
+                                                                                },
+    "com.offroad.mud.truck.games.runner.snow.simulator":  {
+                                                              "icon":  "assets/games/com.offroad.mud.truck.games.runner.snow.simulator/icon.webp",
+                                                              "shots":  [
+                                                                            "assets/games/com.offroad.mud.truck.games.runner.snow.simulator/ss1.webp",
+                                                                            "assets/games/com.offroad.mud.truck.games.runner.snow.simulator/ss2.webp",
+                                                                            "assets/games/com.offroad.mud.truck.games.runner.snow.simulator/ss3.webp",
+                                                                            "assets/games/com.offroad.mud.truck.games.runner.snow.simulator/ss4.webp"
+                                                                        ]
+                                                          },
+    "com.shopping.pet.game.simulator.manager.mall":  {
+                                                         "icon":  "assets/games/com.shopping.pet.game.simulator.manager.mall/icon.webp",
+                                                         "shots":  [
+                                                                       "assets/games/com.shopping.pet.game.simulator.manager.mall/ss1.webp",
+                                                                       "assets/games/com.shopping.pet.game.simulator.manager.mall/ss2.webp",
+                                                                       "assets/games/com.shopping.pet.game.simulator.manager.mall/ss3.webp",
+                                                                       "assets/games/com.shopping.pet.game.simulator.manager.mall/ss4.webp"
+                                                                   ]
+                                                     },
+    "com.ambulence.driving.rescue.simulator.doctor":  {
+                                                          "icon":  "assets/games/com.ambulence.driving.rescue.simulator.doctor/icon.webp",
+                                                          "shots":  [
+                                                                        "assets/games/com.ambulence.driving.rescue.simulator.doctor/ss1.webp",
+                                                                        "assets/games/com.ambulence.driving.rescue.simulator.doctor/ss2.webp",
+                                                                        "assets/games/com.ambulence.driving.rescue.simulator.doctor/ss3.webp",
+                                                                        "assets/games/com.ambulence.driving.rescue.simulator.doctor/ss4.webp"
+                                                                    ]
+                                                      },
+    "com.crazy.taxi.parking.driver.stunt.simulatin":  {
+                                                          "icon":  "assets/games/com.crazy.taxi.parking.driver.stunt.simulatin/icon.webp",
+                                                          "shots":  [
+                                                                        "assets/games/com.crazy.taxi.parking.driver.stunt.simulatin/ss1.webp",
+                                                                        "assets/games/com.crazy.taxi.parking.driver.stunt.simulatin/ss2.webp",
+                                                                        "assets/games/com.crazy.taxi.parking.driver.stunt.simulatin/ss3.webp",
+                                                                        "assets/games/com.crazy.taxi.parking.driver.stunt.simulatin/ss4.webp"
+                                                                    ]
+                                                      },
+    "com.pick.up.drop.simulator.game":  {
+                                            "icon":  "assets/games/com.pick.up.drop.simulator.game/icon.webp",
+                                            "shots":  [
+                                                          "assets/games/com.pick.up.drop.simulator.game/ss1.webp",
+                                                          "assets/games/com.pick.up.drop.simulator.game/ss2.webp",
+                                                          "assets/games/com.pick.up.drop.simulator.game/ss3.webp",
+                                                          "assets/games/com.pick.up.drop.simulator.game/ss4.webp"
+                                                      ]
+                                        },
+    "com.pub.sg.passengers.simulator":  {
+                                            "icon":  "assets/games/com.pub.sg.passengers.simulator/icon.webp",
+                                            "shots":  [
+                                                          "assets/games/com.pub.sg.passengers.simulator/ss1.webp",
+                                                          "assets/games/com.pub.sg.passengers.simulator/ss2.webp",
+                                                          "assets/games/com.pub.sg.passengers.simulator/ss3.webp",
+                                                          "assets/games/com.pub.sg.passengers.simulator/ss4.webp"
+                                                      ]
+                                        },
+    "com.pub.sg.obby.speed.keyboard":  {
+                                           "icon":  "assets/games/com.pub.sg.obby.speed.keyboard/icon.webp",
+                                           "shots":  [
+                                                         "assets/games/com.pub.sg.obby.speed.keyboard/ss1.webp",
+                                                         "assets/games/com.pub.sg.obby.speed.keyboard/ss2.webp",
+                                                         "assets/games/com.pub.sg.obby.speed.keyboard/ss3.webp",
+                                                         "assets/games/com.pub.sg.obby.speed.keyboard/ss4.webp"
+                                                     ]
+                                       },
+    "com.pub.sg.crazy.surgeon":  {
+                                     "icon":  "assets/games/com.pub.sg.crazy.surgeon/icon.webp",
+                                     "shots":  [
+                                                   "assets/games/com.pub.sg.crazy.surgeon/ss1.webp",
+                                                   "assets/games/com.pub.sg.crazy.surgeon/ss2.webp",
+                                                   "assets/games/com.pub.sg.crazy.surgeon/ss3.webp",
+                                                   "assets/games/com.pub.sg.crazy.surgeon/ss4.webp"
+                                               ]
+                                 },
+    "com.pub.sg.bird.smash":  {
+                                  "icon":  "assets/games/com.pub.sg.bird.smash/icon.webp",
+                                  "shots":  [
+                                                "assets/games/com.pub.sg.bird.smash/ss1.webp",
+                                                "assets/games/com.pub.sg.bird.smash/ss2.webp",
+                                                "assets/games/com.pub.sg.bird.smash/ss3.webp",
+                                                "assets/games/com.pub.sg.bird.smash/ss4.webp"
+                                            ]
+                              },
+    "com.pub.euro.truck.driving":  {
+                                       "icon":  "assets/games/com.pub.euro.truck.driving/icon.webp",
+                                       "shots":  [
+                                                     "assets/games/com.pub.euro.truck.driving/ss1.webp",
+                                                     "assets/games/com.pub.euro.truck.driving/ss2.webp",
+                                                     "assets/games/com.pub.euro.truck.driving/ss3.webp",
+                                                     "assets/games/com.pub.euro.truck.driving/ss4.webp"
+                                                 ]
+                                   }
+}
