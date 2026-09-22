@@ -383,11 +383,15 @@
       color: var(--text);
     }
     .typewriter {
-      min-height: 1.7em;
+      /* reserves the tallest tagline wrap so the hero buttons never shift */
+      min-height: 3.2em;
       margin-top: 0.85rem;
       color: var(--muted);
       max-width: 38rem;
       font-size: 1.05rem;
+    }
+    @media (max-width: 359px) {
+      .typewriter { min-height: 4.8em; }
     }
     .typewriter .cursor {
       display: inline-block;
@@ -939,7 +943,7 @@
         <p class="hello">Hello, I’m <span class="hero-name">Muhammad Ahmad</span></p>
         <h1>Mobile <em>Game</em> Developer</h1>
         <p class="role">Unity · 3D Android titles · AI-assisted production</p>
-        <p class="typewriter" aria-live="polite"><span id="typed"></span><span class="cursor"></span></p>
+        <p class="typewriter"><span id="typed"></span><span class="cursor"></span></p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#games">View My Games</a>
           <a class="btn btn-ghost" href="Resume/Muhammad%20Ahmad%20Resume.pdf" download="Muhammad-Ahmad-Resume.pdf">Download Resume</a>
@@ -1273,16 +1277,45 @@
       });
 
       var typed = document.getElementById("typed");
-      var tagline = "Shipping 3D simulation and action games from first playable to Play Store.";
+      var taglines = [
+        "Shipping 3D simulation and action games from first playable to Play Store.",
+        "Building immersive mobile experiences with Unity and AI-assisted workflows.",
+        "2+ years crafting Android games that players actually enjoy.",
+        "From concept to Play Store — full game development lifecycle.",
+        "Turning ideas into polished 3D mobile games, one build at a time.",
+        "23+ games delivered and live on the Play Store."
+      ];
+      var TYPE_MS = 55;
+      var ERASE_MS = 34;
+      var HOLD_MS = 2000;
+      var GAP_MS = 500;
       if (reduce) {
-        typed.textContent = tagline;
+        typed.textContent = taglines[0];
       } else {
-        var i = 0;
-        (function type() {
-          typed.textContent = tagline.slice(0, i);
-          if (i < tagline.length) {
-            i += 1;
-            setTimeout(type, 28);
+        var tIndex = 0;
+        var tCount = 0;
+        var erasing = false;
+        (function tick() {
+          var text = taglines[tIndex];
+          if (erasing) {
+            tCount -= 1;
+            typed.textContent = text.slice(0, tCount);
+            if (tCount > 0) {
+              setTimeout(tick, ERASE_MS);
+            } else {
+              erasing = false;
+              tIndex = (tIndex + 1) % taglines.length;
+              setTimeout(tick, GAP_MS);
+            }
+          } else {
+            tCount += 1;
+            typed.textContent = text.slice(0, tCount);
+            if (tCount < text.length) {
+              setTimeout(tick, TYPE_MS);
+            } else {
+              erasing = true;
+              setTimeout(tick, HOLD_MS);
+            }
           }
         })();
       }
